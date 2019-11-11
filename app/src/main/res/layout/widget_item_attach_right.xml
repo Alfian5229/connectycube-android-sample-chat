@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent">
+
+    <LinearLayout style="@style/LinearAttachWidgetFrame.Right">
+
+        <TextView
+            android:id="@+id/msg_text_time_attach"
+            style="@style/TextViewAttach.Right"
+            tools:text="time" />
+
+        <ImageView
+            android:id="@+id/msg_signs_attach"
+            style="@style/ImageViewAttachWidget.Right" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/refresh_attach_view"
+        style="@style/RefreshImageButtonStyle.Right" />
+
+</FrameLayout>

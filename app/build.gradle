@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+    flavorDimensions rootProject.dimensionDefault
+
+    defaultConfig {
+        applicationId "com.connectycube.sample.chat"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+    }
+
+    productFlavors {
+        speedDev {
+            dimension rootProject.dimensionDefault
+            minSdkVersion 21
+        }
+        dev {
+            dimension rootProject.dimensionDefault
+            minSdkVersion rootProject.minSdkVersion
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
+            proguardFile 'proguard-rules.pro'
+            zipAlignEnabled false
+        }
+
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+//    signingConfigs {
+//        debug {
+//            storeFile file("../cert/keyStore")
+//            storePassword "android"
+//            keyAlias "keyDebug"
+//            keyPassword "android"
+//        }
+//    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    implementation "com.connectycube:connectycube-android-sdk-chat:$rootProject.sdkVersion"
+    implementation "com.connectycube:connectycube-android-sdk-storage:$rootProject.sdkVersion"
+    implementation "com.connectycube:connectycube-android-sdk-pushnotifications:$rootProject.sdkVersion"
+    implementation "com.connectycube:connectycube-ui-chat-messages-adapter:$rootProject.chatAdapterVersion"
+
+    implementation "com.android.support:design:$rootProject.designVersion"
+
+    implementation "com.timehop.stickyheadersrecyclerview:library:$rootProject.stickylistheadersVersion@aar"
+    implementation "com.github.orangegangsters:swipy:$rootProject.swipyVersion@aar"
+}
+
+//apply from: "../artifacts.gradle"
+apply plugin: 'com.google.gms.google-services'
